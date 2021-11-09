@@ -20,6 +20,7 @@ Vue.use(echarts);
 
 ```r
 <div id="chinaMap" style="{ width: 375px; height: 400px;}"></div>
+<div id="line" style="{ width: 375px; height: 400px;}"></div>
 
 const data = [
     {
@@ -35,6 +36,7 @@ const data = [
 mounted(){
     setTimeout(()=>{
         this.$echarts.chinaMap("chinaMap", data);
+      	this.$echarts.line("line");
     },2000)
 }
 ```
