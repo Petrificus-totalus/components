@@ -4,7 +4,7 @@
 
 # 使用
 
-1. 复制 `echarts.js` ，可以放入 `plugins` 文件夹中因为他属于插件
+1. 复制两个文件 ，可以放入 `plugins` 文件夹中因为他属于插件
 2. `main.js` 中引入相应的地图并注册
 
 ```javascript
@@ -34,9 +34,12 @@ const data = [
     ......
 ]
 mounted(){
-    setTimeout(()=>{
-        this.$echarts.chinaMap("chinaMap", data);
-      	this.$echarts.line("line");
-    },2000)
+   axios.get('xxx').then(res => {
+     this.$echarts.chinaMap("chinaMap", res.data);  // res.data 的形式如 data 所示
+     this.$echarts.line("line");
+   })        
 }
 ```
+
+4. `nameMap.js` 在需要用世界地图时用，将英文转换为中文。不用世界地图不用引入，并删掉 `echarts.js` 中的 `import nameMap from "./nameMap";` 以及 `worldMap` 的 `option` 中的 `nameMap` 
+

@@ -1,5 +1,5 @@
 import echarts from "echarts";
-
+import nameMap from "./nameMap";
 const install = function (Vue) {
   Object.defineProperties(Vue.prototype, {
     $echarts: {
@@ -92,7 +92,9 @@ const install = function (Vue) {
               //提示框组件
               tooltip: {
                 formatter: function (val) {
-                  return val.name + ": " + val.value;
+                  return (
+                    val.name + ": " + (isNaN(+val.value) ? "0" : val.value)
+                  );
                 },
               },
               // 视觉映射组件
@@ -101,10 +103,10 @@ const install = function (Vue) {
                   type: "piecewise",
                   pieces: [
                     { min: 0, max: 0, color: "#fff" },
-                    { min: 1, max: 10, color: "#fdfdcf" },
-                    { min: 10, max: 100, color: "#fe9e83" },
-                    { min: 100, max: 1000, color: "#e55a4e" },
-                    { min: 1000, max: 10000, color: "#4f070d" },
+                    { min: 1, max: 1000, color: "#fdfdcf" },
+                    { min: 1000, max: 10000, color: "#fe9e83" },
+                    { min: 10000, max: 500000, color: "#e55a4e" },
+                    { min: 500000, max: 1000000000, color: "#4f070d" },
                   ],
                 },
               ],
@@ -113,8 +115,8 @@ const install = function (Vue) {
                   name: "世界地图",
                   type: "map",
                   map: "world",
-                  roam: false, // 自动缩放
-                  zoom: 1.2,
+                  roam: true, // 自动缩放
+                  zoom: 1.4,
                   label: {
                     normal: {
                       show: false,
@@ -123,6 +125,7 @@ const install = function (Vue) {
                       },
                     },
                   },
+                  nameMap, // 转换成中文显示  这样传过来的 data 可以是中文，因为接口疫情数据返回的是中文国家名
                   itemStyle: {
                     normal: {
                       areaColor: "rgba(0,255,236,0)",
