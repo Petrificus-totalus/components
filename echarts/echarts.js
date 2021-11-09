@@ -34,7 +34,7 @@ const install = function (Vue) {
                 // 提示框浮层内容格式器，支持字符串模板和回调函数两种形式
                 // 使用函数模板  传入的数据值 -> value: number | Array
                 formatter: function (val) {
-                  return val.data.name + ": " + val.data.value;
+                  return val.name + ": " + val.value;
                 },
               },
               // 视觉映射组件
