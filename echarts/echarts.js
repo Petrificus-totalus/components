@@ -89,13 +89,10 @@ const install = function (Vue) {
             var dom = document.getElementById(id);
             var mychart = echarts.init(dom);
             var option = {
-              // 提示框组件
+              //提示框组件
               tooltip: {
-                trigger: "item", // 触发类型, 数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用
-                // 提示框浮层内容格式器，支持字符串模板和回调函数两种形式
-                // 使用函数模板  传入的数据值 -> value: number | Array
                 formatter: function (val) {
-                  return val.data.name + ": " + val.data.value;
+                  return val.name + ": " + val.value;
                 },
               },
               // 视觉映射组件
@@ -120,7 +117,7 @@ const install = function (Vue) {
                   zoom: 1.2,
                   label: {
                     normal: {
-                      show: true,
+                      show: false,
                       textStyle: {
                         fontSize: 8,
                       },
@@ -137,7 +134,6 @@ const install = function (Vue) {
                       shadowOffsetY: 0,
                       shadowBlur: 20,
                       borderWidth: 0,
-                      shadowColor: "rgba(0, 0, 0, 0.5)",
                     },
                   },
                   data,
