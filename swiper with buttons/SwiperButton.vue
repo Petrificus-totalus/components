@@ -39,6 +39,7 @@ export default {
           delay: 2000,
         },
         on: {
+          // 这个回调只有早滑动之后调用，this.swiper.slideTo 那个滑动后不回调
           slideChangeTransitionEnd: function () {
             that.currentIndex = this.activeIndex;
             // this.activeIndex //切换结束时，告诉我现在是第几个slide
