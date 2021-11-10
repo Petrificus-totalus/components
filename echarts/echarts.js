@@ -36,6 +36,15 @@ const install = function (Vue) {
                 formatter: function (val) {
                   return val.name + ": " + val.value;
                 },
+                /* formatter 可以返回 html 字符串
+                // 不加这两个属性不让点
+                triggerOn: "click",
+                enterable: true,
+                formatter: function (val) {
+                  // 点击后跳到界面
+                  return `<a href='/#/city/${val.name}' style="color:#fff;"><div>${val.name}:${val.value}</div></a>`;
+                },
+                */
               },
               // 视觉映射组件
               visualMap: [
